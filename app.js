@@ -12,6 +12,14 @@ app.get('/', (req, res) => {                                                //si
     res.send('Testing');
 });
 
+app.get('/about', (req, res) => {                                           //defines an about route, when the request is made to the URL ('/about'), responds with About
+    res.send('About');
+});
+
+app.use((req, res, next) => {                                               //defines a 404 route, when the request is made to a URL that does not
+    res.status(404).send('Page not found');
+});
+
 const PORT = process.env.PORT || 3000;                                     //block starts the server on the specified port, port to listen on                  
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
